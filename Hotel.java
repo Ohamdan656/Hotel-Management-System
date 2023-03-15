@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -23,6 +24,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 
@@ -48,9 +50,7 @@ double Indian_Rupee = 65.02;
 
 private JLabel lblClock;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -63,6 +63,18 @@ private JLabel lblClock;
 			}
 		});
 	}
+	
+	private void clearTextFields(JComponent... components) {
+		for(JComponent component: components) {
+			if(component instanceof JTextField) {
+				((JTextField)component).setText("");
+			}else if(component instanceof JLabel) {
+				((JLabel)component).setText("");
+			}
+		}
+		
+	}
+	
 	public void datetime()
 	{
 		Thread datetime = new Thread()
@@ -79,7 +91,6 @@ private JLabel lblClock;
 			    			  int month = cal.get(Calendar.MONTH);
 			    			  int year = cal.get(Calendar.YEAR);
 			    			  
-			    			 
 			    			  int second = cal.get(Calendar.SECOND);
 			    			  int minute = cal.get(Calendar.MINUTE);
 			    			  int hour = cal.get(Calendar.HOUR);
@@ -98,18 +109,12 @@ private JLabel lblClock;
 				};
 		datetime.start();
 	}
-	/**
-	/**
-	 * Create the application.
-	 */
+
 	public Hotel() {
 		initialize();
 		datetime();
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 1500, 800);
@@ -518,10 +523,7 @@ private JLabel lblClock;
 		btnDelivery.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnDelivery.setBounds(17, 278, 197, 23);
 		panel_1.add(btnDelivery);
-		
-		
-		
-		
+
 		JLabel lblNewLabel_1_3 = new JLabel("Currency Converter");
 		lblNewLabel_1_3.setForeground(Color.BLUE);
 		lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
@@ -690,9 +692,7 @@ private JLabel lblClock;
 		 lblClock.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblClock.setBounds(624, 21, 317, 38);
 		 panel_1_1.add(lblClock);
-		
-		
-		
+
 		JLabel lblNewLabel = new JLabel("Hotel Management System");
 		lblNewLabel.setForeground(Color.BLUE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 70));
@@ -737,24 +737,12 @@ private JLabel lblClock;
 		JMenuItem mntmReset = new JMenuItem("Reset");
 		mntmReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtFriedRice.setText(null);
-				 txtShawarma.setText(null);
-				 txtChicken.setText(null);
-			     txtChooseDrink.setText(null);
-				 txtTotalCostOfMeal.setText(null);
-				 txtTotalCostOfDrink.setText(null);
-				 txtCostOfDelivery.setText(null);
-				 txtCostOfRoom.setText(null);
-				 txtTax.setText(null);
-				txtSubTotal.setText(null);
-				txtTotal.setText(null);
-				 txtEnterCurrency.setText(null);
-				 txtCurrencyOutput.setText(null);
-				txtDisplay.setText(null);
-				 btnChooseDrink.setSelectedItem("Choose a drink");
-				 btnChooseRoom.setSelectedItem("Choose a room");
-				 btnSelectCountry.setSelectedItem("Country");
-				 ReceiptArea.setText(null);
+				
+				clearTextFields(txtFriedRice, txtShawarma, txtChicken, txtChooseDrink, txtTotalCostOfMeal, txtTotalCostOfDrink, txtCostOfDelivery, txtCostOfRoom, txtTax, txtSubTotal, txtTotal, txtEnterCurrency, txtCurrencyOutput, txtDisplay);
+				btnChooseDrink.setSelectedItem("Choose a drink");
+				btnChooseRoom.setSelectedItem("Choose a room");
+				btnSelectCountry.setSelectedItem("Country");
+				ReceiptArea.setText(null);
 			}
 		});
 		mntmReset.setFont(new Font("Segoe UI", Font.BOLD, 20));
@@ -803,24 +791,11 @@ private JLabel lblClock;
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Refresh");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtFriedRice.setText(null);
-				 txtShawarma.setText(null);
-				 txtChicken.setText(null);
-			     txtChooseDrink.setText(null);
-				 txtTotalCostOfMeal.setText(null);
-				 txtTotalCostOfDrink.setText(null);
-				 txtCostOfDelivery.setText(null);
-				 txtCostOfRoom.setText(null);
-				 txtTax.setText(null);
-				txtSubTotal.setText(null);
-				txtTotal.setText(null);
-				 txtEnterCurrency.setText(null);
-				 txtCurrencyOutput.setText(null);
-				txtDisplay.setText(null);
-				 btnChooseDrink.setSelectedItem("Choose a drink");
-				 btnChooseRoom.setSelectedItem("Choose a room");
-				 btnSelectCountry.setSelectedItem("Country");
-				 ReceiptArea.setText(null);
+				clearTextFields(txtFriedRice, txtShawarma, txtChicken, txtChooseDrink, txtTotalCostOfMeal, txtTotalCostOfDrink, txtCostOfDelivery, txtCostOfRoom, txtTax, txtSubTotal, txtTotal, txtEnterCurrency, txtCurrencyOutput, txtDisplay);
+				btnChooseDrink.setSelectedItem("Choose a drink");
+				btnChooseRoom.setSelectedItem("Choose a room");
+				btnSelectCountry.setSelectedItem("Country");
+				ReceiptArea.setText(null);			
 			}
 		});
 		mntmNewMenuItem_3.setFont(new Font("Segoe UI", Font.BOLD, 20));
@@ -832,7 +807,10 @@ private JLabel lblClock;
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Exit");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				int action=JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Exit", JOptionPane.YES_NO_OPTION);
+				if(action==0) {
+					System.exit(1);
+				}
 			}
 		});
 		mntmNewMenuItem_4.setForeground(Color.RED);
@@ -850,24 +828,12 @@ private JLabel lblClock;
 		JMenu mnNewMenu_5 = new JMenu("Reset");
 		mnNewMenu_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtFriedRice.setText(null);
-				 txtShawarma.setText(null);
-				 txtChicken.setText(null);
-			     txtChooseDrink.setText(null);
-				 txtTotalCostOfMeal.setText(null);
-				 txtTotalCostOfDrink.setText(null);
-				 txtCostOfDelivery.setText(null);
-				 txtCostOfRoom.setText(null);
-				 txtTax.setText(null);
-				txtSubTotal.setText(null);
-				txtTotal.setText(null);
-				 txtEnterCurrency.setText(null);
-				 txtCurrencyOutput.setText(null);
-				txtDisplay.setText(null);
-				 btnChooseDrink.setSelectedItem("Choose a drink");
-				 btnChooseRoom.setSelectedItem("Choose a room");
-				 btnSelectCountry.setSelectedItem("Country");
-				 ReceiptArea.setText(null);
+				
+				clearTextFields(txtFriedRice, txtShawarma, txtChicken, txtChooseDrink, txtTotalCostOfMeal, txtTotalCostOfDrink, txtCostOfDelivery, txtCostOfRoom, txtTax, txtSubTotal, txtTotal, txtEnterCurrency, txtCurrencyOutput, txtDisplay);
+				btnChooseDrink.setSelectedItem("Choose a drink");
+				btnChooseRoom.setSelectedItem("Choose a room");
+				btnSelectCountry.setSelectedItem("Country");
+				ReceiptArea.setText(null);
 			}
 		});
 		mnNewMenu_5.setFont(new Font("Segoe UI", Font.BOLD, 25));
@@ -984,24 +950,12 @@ private JLabel lblClock;
 		JButton btnReset1 = new JButton("Reset");
 		btnReset1.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent arg0) {
-		 txtFriedRice.setText(null);
-		 txtShawarma.setText(null);
-		 txtChicken.setText(null);
-	     txtChooseDrink.setText(null);
-		 txtTotalCostOfMeal.setText(null);
-		 txtTotalCostOfDrink.setText(null);
-		 txtCostOfDelivery.setText(null);
-		 txtCostOfRoom.setText(null);
-		 txtTax.setText(null);
-		txtSubTotal.setText(null);
-		txtTotal.setText(null);
-		 txtEnterCurrency.setText(null);
-		 txtCurrencyOutput.setText(null);
-		txtDisplay.setText(null);
-		 btnChooseDrink.setSelectedItem("Choose a drink");
-		 btnChooseRoom.setSelectedItem("Choose a room");
-		 btnSelectCountry.setSelectedItem("Country");
-		 ReceiptArea.setText(null);
+		 
+				clearTextFields(txtFriedRice, txtShawarma, txtChicken, txtChooseDrink, txtTotalCostOfMeal, txtTotalCostOfDrink, txtCostOfDelivery, txtCostOfRoom, txtTax, txtSubTotal, txtTotal, txtEnterCurrency, txtCurrencyOutput, txtDisplay);
+				btnChooseDrink.setSelectedItem("Choose a drink");
+				btnChooseRoom.setSelectedItem("Choose a room");
+				btnSelectCountry.setSelectedItem("Country");
+				ReceiptArea.setText(null);
 		 }
 		 });
 		 btnReset1.setBounds(369, 257, 126, 44);
@@ -1009,6 +963,3 @@ private JLabel lblClock;
 		panel_1.add(btnReset1);
 	}
 }
-
-	
-
